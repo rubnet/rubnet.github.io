@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encrypt Mailto Links to Stop Email Spam</title> 
+    <style type="text/css">
+      button {
+          display: block;
+          height: 40px;
+          margin-top: 10px;
+      }
+    </style>
+    <script type="text/javascript">
+      function encodeString(e,a){for(var n="",o="",m=e.length,t=0;t<m;t++){switch(a){case 1:o="&#"+Number(e.charCodeAt(t)).toString()+";";break;case 2:o="&#x"+Number(e.charCodeAt(t)).toString(16)+";";break;case 3:switch(Math.ceil(2*Math.random())){case 1:o="&#"+Number(e.charCodeAt(t)).toString()+";";break;case 2:o="&#x"+Number(e.charCodeAt(t)).toString(16)+";";break;default:return"ERROR: wrong random number."}break;case 4:o="%"+Number(e.charCodeAt(t)).toString(16);break;case 5:o=e.charAt(t);break;default:return"ERROR: wrong encoding mode."}n+=o}return n}function obfuscateEmail(){var e=Number(document.nospam.modeSelect.value),a="";if(a=encodeString("mailto:",4==e?3:e),""==document.nospam.realName.value?0==document.nospam.wasEmpty.value&&(document.nospam.linkText.value=1,document.nospam.wasEmpty.value=1):1==document.nospam.wasEmpty.value&&(document.nospam.linkText.value=2,document.nospam.wasEmpty.value=0),""!=document.nospam.email.value){var n=document.nospam.email.value;if(""!=n){var o=encodeString(n,e);document.nospam.encodedEmail.value=o,document.nospam.encodedMailtoEmail.value=a+o,1==Number(document.nospam.linkText.value)?document.nospam.completeEmailLink.value='<a href="'+a+o+'">'+encodeString(n,3)+"</a>":document.nospam.completeEmailLink.value='<a href="'+a+o+'">'+document.nospam.realName.value+"</a>"}}else document.nospam.completeEmailLink.value="No email given."}
+    </script>
+</head>
+<body>
+<section class="body column nine">
+ 
+<p>It’s easy to get spammed. One way to get spammed is to have email links on your websites because bots search through websites looking for &lt;emailaddress&gt;@&lt;host&gt;.&lt;com&gt;.</p>
+<p>So, this is the best solution I came across. Type in your email address below and it will shoot back an <strong>encrypted mailto link</strong> for you to use. <strong>It is amazing</strong>, <strong>works great</strong>, and the results <strong>validate xHTML Strict</strong>.</p>
+<form name="nospam" action="spam-me-not.html" method="get">
+<h2>The Input</h2>
+<dl>
+<dt><label for="email">Type your email address here:</label></dt>
+<dd><input type="text" size="50" name="email" id="email" tabindex="1" class="yellow" onkeyup="javascript:obfuscateEmail();"></dd>
+<dd>
+<div>
+				<label for="modeSelect">Encoding mode:</label><br>
+					<select size="1" name="modeSelect" id="modeSelect" tabindex="2" onclick="javascript:obfuscateEmail();"><option value="1">Decimal Notation</option><option value="2">Hexadecimal Notation</option><option value="3" selected="">Random-mixed Notation</option><option value="4">don’t encode</option></select>
+				</div>
+</dd>
+</dl>
+<p>			<!-- needed for visible link text evaluation --><br>
+			<input type="hidden" name="wasEmpty" value="1"></p>
+<dl>
+<dt><label for="realName">Visible link text (<acronym title="If you leave this blank, the email address is used.">optional</acronym>):</label></dt>
+<dd><input type="text" size="50" name="realName" id="realName" tabindex="3" onkeyup="javascript:obfuscateEmail();"></dd>
+<dd>
+<div>
+				<label for="linkText">Use as link text:</label><br>
+				<select size="1" name="linkText" id="linkText" tabindex="4" onclick="javascript:obfuscateEmail();"><option value="1">Email Address</option><option value="2">Text as Given Above</option></select>
+				</div>
+</dd>
+</dl>
+<p>			<!--The Results:--></p>
+<h2>The Results</h2>
+<dl>
+<dt><label for="completeEmailLink">Complete email link (email or name as visible Text):</label></dt>
+<dd><input type="text" size="50" name="completeEmailLink" id="completeEmailLink" tabindex="5" class="yellow" onfocus="javascript:document.nospam.completeEmailLink.select();"></dd>
+<dt><label for="encodedEmail">Encoded email address only:</label></dt>
+<dd><input type="text" size="50" name="encodedEmail" id="encodedEmail" tabindex="6" onfocus="javascript:document.nospam.encodedEmail.select();"></dd>
+<dt><label for="encodedMailtoEmail">Encoded "mailto:" + email address:</label></dt>
+<dd><input type="text" size="50" name="encodedMailtoEmail" id="encodedMailtoEmail" tabindex="7" onfocus="javascript:document.nospam.encodedMailtoEmail.select();"></dd>
+</dl></form>
+
+
+						 
+
+					</section>
+          
+          from <a href='https://robspangler.com/blog/encrypt-mailto-links-to-stop-email-spam/'>https://stackoverflow.com/a/42369575</a>
+          
+</body>
+</html>
+
+          
