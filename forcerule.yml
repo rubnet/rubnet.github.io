@@ -1,0 +1,38 @@
+mixed-port: 10808
+allow-lan: true
+mode: Rule
+log-level: info
+external-controller: 192.168.1.1:9898
+external-ui: dashboard_Razord
+cfw-bypass:
+  - qq.com
+  - music.163.com
+  - '*.music.126.net'
+  - localhost
+  - 127.*
+cfw-latency-timeout: 5000
+dns:
+  enable: true
+  ipv6: false
+  listen: 192.168.1.1:5353
+  # enhanced-mode: redir-host # 或 fake-ip
+  # These nameservers are used to resolve the DNS nameserver hostnames below.
+  # Specify IP addresses only
+  default-nameserver:
+    - 114.114.114.114
+    - 119.29.29.29
+
+  nameserver: # fallback 与 nameserver 内的服务器列表同时发起请求，depend Country.mmdb当规则符合 GEOIP 在 CN 以外时，fallback 列表内的域名服务器生效。  
+    - 202.141.162.123:5353
+    - https://dns.tuna.tsinghua.edu.cn:8443/dns-query
+    - tls://1.0.0.1:853
+    - tls://dns.google:853
+    - https://1.0.0.1/dns-query
+    
+    #- tls://13800000000.rubyfish.cn:853
+    #- https://13800000000.rubyfish.cn/
+    #- https://cloudflare-dns.com/dns-query
+    #- https://101.6.6.6:8443/dns-query
+Proxy: ~
+Proxy Group: ~
+Rule: ~
