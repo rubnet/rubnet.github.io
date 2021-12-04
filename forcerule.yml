@@ -27,7 +27,9 @@ dns:
     - tls://1.0.0.1:853
     - tls://dns.google:853
     - https://1.0.0.1/dns-query
-    - 202.141.162.123:5353
+    - dhcp://en0 # dns from dhcp
+
+    #- 202.141.162.123:5353
 
     #- tls://13800000000.rubyfish.cn:853
     #- https://13800000000.rubyfish.cn/
