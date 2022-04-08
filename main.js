@@ -222,6 +222,10 @@ $(document).ready(function () {
     var fileListElement = $("#file-list");
     var fileItemElementTemplate = fileListElement.find("li").detach();
 
+    var filterEl = document.getElementById('filter');
+    filterEl.focus({ preventScroll: true });
+    // $("#filter").on("keyup", filter());
+
     
     // setup theme switching
     $('input[name=theme]').on("change", applyTheme);
@@ -240,10 +244,6 @@ $(document).ready(function () {
 
     navigateToUrlLocation();
 });
-
-var filterEl = document.getElementById('filter');
-filterEl.focus({ preventScroll: true });
-// $("#filter").on("keyup", filter());
 
 function filter() { //for search file in current directory
     var q = filterEl.value.trim().toLowerCase();
