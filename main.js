@@ -247,8 +247,16 @@ cash.ajax = function(url,options) {
 
                 console.log("replaceState", path);
                 history.replaceState(null, path, '#' + path);
-                //document.title = "index: " + path;
-                document.querySelector('.container>h1').textContent = decodeURIComponent(path);
+                document.title = "idx: " + path;
+                //document.querySelector('.container>h4').textContent = decodeURIComponent(path); 
+                aHtml = '';
+                dirs = decodeURIComponent(path).split('/');
+                for (let index = 0, depth = dirs.length - 1; index < depth; index++) {
+                      redirPath = dirs.slice(0, index + 1).join('/');
+                      aHtml += '<a href="#' + redirPath + '/">' + dirs[index] + '</a>/';
+                }
+                document.querySelector('.container>h4').innerHTML = aHtml;
+
                 filterEl.value = ''; //reset input search
                 isNavigating = false;
             },
