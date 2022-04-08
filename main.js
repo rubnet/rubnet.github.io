@@ -211,6 +211,24 @@ $(document).ready(function () {
     }
     
     
+    function filter() { //for search file in current directory
+        var q = filterEl.value.trim().toLowerCase();
+        var elems = document.querySelectorAll('#file-list>li.file');
+        elems.forEach(function(el) {
+            if (!q) { //not query,then restore all files display
+                el.style.display = ''; 
+                return;
+            }
+            var nameEl = el.querySelector('.file-name');
+            var nameVal = nameEl.textContent.trim().toLowerCase();
+            if (nameVal.indexOf(q) !== -1) {
+                el.style.display = '';
+            } else {
+                el.style.display = 'none';
+            }
+        });
+    }
+    
     function navigateToUrlLocation() {
         var requestedPath = window.location.hash;
         var startPath = requestedPath ? requestedPath.substr(1) : "/";
@@ -224,7 +242,7 @@ $(document).ready(function () {
 
     var filterEl = document.getElementById('filter');
     filterEl.focus({ preventScroll: true });
-    // $("#filter").on("keyup", filter());
+    filterEl.onkeyup = filter ;
 
     
     // setup theme switching
@@ -245,20 +263,3 @@ $(document).ready(function () {
     navigateToUrlLocation();
 });
 
-function filter() { //for search file in current directory
-    var q = filterEl.value.trim().toLowerCase();
-    var elems = document.querySelectorAll('#file-list>li.file');
-    elems.forEach(function(el) {
-        if (!q) { //not query,then restore all files display
-            el.style.display = ''; 
-            return;
-        }
-        var nameEl = el.querySelector('.file-name');
-        var nameVal = nameEl.textContent.trim().toLowerCase();
-        if (nameVal.indexOf(q) !== -1) {
-            el.style.display = '';
-        } else {
-            el.style.display = 'none';
-        }
-    });
-}
