@@ -241,7 +241,7 @@ $(document).ready(function () {
 
     var filterEl = document.getElementById('filter');
     filterEl.focus({ preventScroll: true });
-    filter.onkeyup = filter();
+    $("#filter").on("keyup", filter());
     
     // setup theme switching
     $('input[name=theme]').on("change", applyTheme);
