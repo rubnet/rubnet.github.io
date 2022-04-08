@@ -239,7 +239,7 @@ cash.ajax = function(url,options) {
                 renderFileList(filesData, path);
 
                 $('input[name=sort]')
-                    .unbind("change")
+                    .off("change")
                     .on("change", function () {
                         renderFileList(filesData, path);
                     });
