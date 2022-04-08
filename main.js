@@ -210,23 +210,6 @@ $(document).ready(function () {
 
     }
     
-    function filter() { //for search file in current directory
-        var q = filterEl.value.trim().toLowerCase();
-        var elems = document.querySelectorAll('#file-list>li.file');
-        elems.forEach(function(el) {
-            if (!q) { //not query,then restore all files display
-                el.style.display = ''; 
-                return;
-            }
-            var nameEl = el.querySelector('.file-name');
-            var nameVal = nameEl.textContent.trim().toLowerCase();
-            if (nameVal.indexOf(q) !== -1) {
-                el.style.display = '';
-            } else {
-                el.style.display = 'none';
-            }
-        });
-    }
     
     function navigateToUrlLocation() {
         var requestedPath = window.location.hash;
@@ -239,9 +222,6 @@ $(document).ready(function () {
     var fileListElement = $("#file-list");
     var fileItemElementTemplate = fileListElement.find("li").detach();
 
-    var filterEl = document.getElementById('filter');
-    filterEl.focus({ preventScroll: true });
-    $("#filter").on("keyup", filter());
     
     // setup theme switching
     $('input[name=theme]').on("change", applyTheme);
@@ -260,3 +240,25 @@ $(document).ready(function () {
 
     navigateToUrlLocation();
 });
+
+var filterEl = document.getElementById('filter');
+filterEl.focus({ preventScroll: true });
+// $("#filter").on("keyup", filter());
+
+function filter() { //for search file in current directory
+    var q = filterEl.value.trim().toLowerCase();
+    var elems = document.querySelectorAll('#file-list>li.file');
+    elems.forEach(function(el) {
+        if (!q) { //not query,then restore all files display
+            el.style.display = ''; 
+            return;
+        }
+        var nameEl = el.querySelector('.file-name');
+        var nameVal = nameEl.textContent.trim().toLowerCase();
+        if (nameVal.indexOf(q) !== -1) {
+            el.style.display = '';
+        } else {
+            el.style.display = 'none';
+        }
+    });
+}
