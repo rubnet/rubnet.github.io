@@ -166,7 +166,7 @@ $(document).ready(function () {
                 console.log("replaceState", path);
                 history.replaceState(null, path, '#' + path);
                 document.title = "index: " + path;
-
+                document.querySelector('.container>h1').textContent = path;
 
                 isNavigating = false;
             },
@@ -209,18 +209,39 @@ $(document).ready(function () {
         }
 
     }
-
+    
+    function filter() { //for search file in current directory
+        var q = filterEl.value.trim().toLowerCase();
+        var elems = document.querySelectorAll('#file-list>li.file');
+        elems.forEach(function(el) {
+            if (!q) { //not query,then restore all files display
+                el.style.display = ''; 
+                return;
+            }
+            var nameEl = el.querySelector('.file-name');
+            var nameVal = nameEl.textContent.trim().toLowerCase();
+            if (nameVal.indexOf(q) !== -1) {
+                el.style.display = '';
+            } else {
+                el.style.display = 'none';
+            }
+        });
+    }
+    
     function navigateToUrlLocation() {
         var requestedPath = window.location.hash;
         var startPath = requestedPath ? requestedPath.substr(1) : "/";
         navigateTo(startPath);
     }
 
-    var filesBaseUrl = "/m3u8files";
+    var filesBaseUrl = "/m3u8files"; // nginx autodindex json api 
     var isNavigating = false;
     var fileListElement = $("#file-list");
     var fileItemElementTemplate = fileListElement.find("li").detach();
 
+    var filterEl = document.getElementById('filter');
+    filterEl.focus({ preventScroll: true });
+    
     // setup theme switching
     $('input[name=theme]').on("change", applyTheme);
 
