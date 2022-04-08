@@ -13,7 +13,88 @@
  */
 
 $(document).ready(function () {
+function noop(){};
 
+var ajaxOpts = {
+      success: noop,
+      error: noop,
+      complete: noop,
+      type: 'GET',
+      async: true
+    };
+
+var uid = Date.now();
+cash.guid = function(){
+  return '_cash'+(uid++).toString(16);
+};
+
+cash.ajax = function(url,options) {
+
+  if ( arguments.length === 1 ) {
+    options = url;
+    url = options.url;
+  }
+
+  if ( !url ) { return false; }
+
+  options = cash.extend({},ajaxOpts,options);
+
+  var request,
+      queryData,
+      callbackName;
+
+  if ( options.dataType === 'jsonp' || options.dataType === 'script' ) {
+    request = document.createElement('script');
+    callbackName = cash.guid();
+
+    options.data.callback = callbackName;
+    window[callbackName] = function(data){
+      options.success.call(request, data, null, request);
+    };
+
+    request.onload = request.onerror = function(e){ 
+      if ( e && e.type === "error" ) {
+        options.error.call(this, request);
+      }
+      options.complete.call(this, request);
+      request.remove();
+    }
+
+    queryData = '?';
+    for (var key in options.data){
+      queryData += encodeURIComponent(key) + '=' + encodeURIComponent(options.data[key]) +'&';
+    }
+
+    request.src = url + queryData;
+    document.head.appendChild(request);
+
+  } else {
+    request = new XMLHttpRequest();
+    request.open(options.type, url, options.async);
+
+    request.setRequestHeader("X-Requested-With","XMLHttpRequest");
+
+    request.onload = request.onerror = function onload() {
+      var text = request.statusText;
+      if ( request.status >= 200 && request.status < 400 ) {
+        var response = request.responseText;
+        if ( options.dataType === 'json' ) { response = JSON.parse(response); }
+        options.success.call(this, response, text, request);
+      } else {
+        options.error.call(this, request, text);
+      }
+      options.complete.call(this, request, text);
+    };
+
+    if ( options.data ) {
+      queryData = cash.isString(options.data) ? options.data : JSON.stringify(options.data);
+    }
+
+    request.send( queryData );
+  }
+
+  return request;
+};
     function applyTheme() {
         var theme = $('input[name=theme]:checked').val()
 
