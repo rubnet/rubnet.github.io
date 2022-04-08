@@ -242,13 +242,14 @@ cash.ajax = function(url,options) {
                     .off("change")
                     .on("change", function () {
                         renderFileList(filesData, path);
+                        filterEl.value = ''; //reset input search
                     });
 
                 console.log("replaceState", path);
                 history.replaceState(null, path, '#' + path);
-                document.title = "index: " + path;
+                //document.title = "index: " + path;
                 document.querySelector('.container>h1').textContent = decodeURIComponent(path);
-
+                filterEl.value = ''; //reset input search
                 isNavigating = false;
             },
 
