@@ -120,20 +120,20 @@ cash.ajax = function(url,options) {
 
         if (fileType === "parent") {
             // navigate to parent dir
-            fileItemElement.find(".file-link").click(function () {
+            fileItemElement.find(".file-link").on('click', function () {
                 navigateTo(directory);
             });
 
         } else if (fileType === "directory") {
             // navigate to sub dir
-            fileItemElement.find(".file-link").click(function () {
+            fileItemElement.find(".file-link").on('click', function () {
                 navigateTo(directory + fileName + "/");
             });
 
         } else if (fileType === "other") {
             // nginx returns symlinks as type other,
             // lets try to follow the links
-            fileItemElement.find(".file-link").click(function () {
+            fileItemElement.find(".file-link").on('click', function () {
                 navigateTo(directory + fileName + "/");
             });
 
