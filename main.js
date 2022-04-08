@@ -166,7 +166,7 @@ $(document).ready(function () {
                 console.log("replaceState", path);
                 history.replaceState(null, path, '#' + path);
                 document.title = "index: " + path;
-                document.querySelector('.container>h1').textContent = path;
+                document.querySelector('.container>h1').textContent = decodeURIComponent(path);
 
                 isNavigating = false;
             },
@@ -241,6 +241,7 @@ $(document).ready(function () {
 
     var filterEl = document.getElementById('filter');
     filterEl.focus({ preventScroll: true });
+    filter.onkeyup = filter();
     
     // setup theme switching
     $('input[name=theme]').on("change", applyTheme);
