@@ -294,7 +294,7 @@ cash.ajax = function(url,options) {
     
     function filter() { //for search file in current directory
         var q = filterEl.value.trim().toLowerCase();
-        var elems = document.querySelectorAll('#file-list>li>a.file-name');
+        var elems = document.querySelectorAll('#file-list>li');
         elems.forEach(function(el) {
             if (!q) { //not query,then restore all files display
                 el.style.display = ''; 
