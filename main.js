@@ -13,7 +13,7 @@
  */
 
 $(document).ready(function () {
-function noop(){};
+		function noop(){};
 
 var ajaxOpts = {
       success: noop,
@@ -139,9 +139,14 @@ cash.ajax = function(url,options) {
 
         } else {
             // just file dl
+            fileHref = filesBaseUrl + directory + fileName;
+	    if( /Android|Opera Mini/i.test(navigator.userAgent) ) {
+		    // dandanplay intent
+		    fileHref = "intent:" + document.location.origin + fileHref + "#Intent;package=com.xyoye.dandanplay;end" ;
+	    }
             fileItemElement.find(".file-link")
-                .attr("href", filesBaseUrl + directory + fileName)
-                .attr("target", "_blank");
+                .attr("href", fileHref);
+//                .attr("target", "_blank");
         }
 
         if (fileSize) {
@@ -223,7 +228,7 @@ cash.ajax = function(url,options) {
             dataType: "json",
 
             success: function (filesData) {
-
+		var dirsCnt=filesCnt = 0
                 // fix sizes and dates
                 filesData.map(function (fileData) {
                     fileData.mtime = new Date(fileData.mtime);
@@ -231,12 +236,17 @@ cash.ajax = function(url,options) {
                     if (fileData.hasOwnProperty("size")) {
                         fileData.rawSize = fileData.size;
                         fileData.size = fileSize(fileData.size);
-                    }
+			filesCnt++;
+                    }else{
+		    	dirsCnt++;
+		    }
 
                     return fileData;
                 });
 
                 renderFileList(filesData, path);
+		filesCount.textContent = filesCnt;
+		dirsCount.textContent = dirsCnt;
 
                 $('input[name=sort]')
                     .off("change")
@@ -352,4 +362,3 @@ cash.ajax = function(url,options) {
 
     navigateToUrlLocation();
 });
-
