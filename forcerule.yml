@@ -1,5 +1,10 @@
 mixed-port: 10808
 allow-lan: true
+# This is only applicable when `allow-lan` is `true`
+# '*': bind all IP addresses
+# 192.168.122.11: bind a single IPv4 address
+# "[aaaa::a8aa:ff:fe09:57d8]": bind a single IPv6 address
+bind-address: '192.168.1.1'
 mode: Rule
 log-level: info
 external-controller: 192.168.1.1:9898
