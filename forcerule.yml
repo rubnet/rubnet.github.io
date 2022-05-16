@@ -1,5 +1,6 @@
 mixed-port: 10808
 allow-lan: true
+ipv6: true
 # This is only applicable when `allow-lan` is `true`
 # '*': bind all IP addresses
 # 192.168.122.11: bind a single IPv4 address
