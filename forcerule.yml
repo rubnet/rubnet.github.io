@@ -30,7 +30,7 @@ dns:
   nameserver: # fallback 与 nameserver 内的服务器列表同时发起请求，depend Country.mmdb当规则符合 GEOIP 在 CN 以外时，fallback 列表内的域名服务器生效。  
     - dns.tuna.tsinghua.edu.cn:5353
     - 202.141.162.123:5353
-    - tls://208.67.222.222:853
+    - https://146.112.41.2/dns-query
     - https://1.0.0.1/dns-query
 
     #- 202.141.162.123:5353
