@@ -49,6 +49,6 @@ dns:
 Proxy: ~
 Proxy Group: ~
 Rule: ~
-rules:
+rules: # bypass ddns for looking up ip   
  - DOMAIN-SUFFIX,ident.me,DIRECT
 
