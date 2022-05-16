@@ -47,4 +47,6 @@ dns:
     #- https://101.6.6.6:8443/dns-query
 Proxy: ~
 Proxy Group: ~
-Rule: ~
+Rule: 
+ - DOMAIN-SUFFIX,ident.me,DIRECT
+
