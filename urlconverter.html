@@ -37,9 +37,12 @@
               if(oldPath.length>0){ 
                   //newPath="https://xxx/tmm3p/index.m3u8?path=/ttm3p/../"+oldPath+".m3u8"
                   newPath=oUrl.origin+'/tmm3p/index.m3u8?path=/ttm3p/..'+encodeURIComponent(oldPath)+'.m3u8';
-                  href='intent:'+newPath+'#Intent;package=com.xyoye.dandanplay;end'; //intent 打开 弹弹player
-                  //window.prompt('url',href);
-                  window.open(href);
+                    if( /Android|Opera Mini/i.test(navigator.userAgent) ) {
+                        href='intent:'+newPath+'#Intent;package=com.xyoye.dandanplay;end';
+                        window.open(href); 
+                    }else{
+                        window.prompt('url',newPath);
+                    }
               }
           }
       }
