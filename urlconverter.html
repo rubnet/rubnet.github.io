@@ -16,14 +16,15 @@
     </style>
     <script type="text/javascript">
       window.onload= function(){
-          var throttleAjax = throttle(urlconverter,1500);
+          var prev  = Date.now(); 
+          let throttleAjax = throttle(urlconverter,4000);
           document.getElementById("urlID").addEventListener("keyup",e=>{
             throttleAjax(e.target.value);
           })
-      };
-
+      }; 
+    
       function throttle(func,delay){ //节流 高阶函数
-            let prev = 0;//上一次记录时间
+            //let prev = 0;//上一次记录时间
             return function(arguments){
               let now = Date.now();//当前时间戳
               if(now - prev > delay){//当前时间 - 上次时间 > 延时时间
