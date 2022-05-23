@@ -15,6 +15,13 @@
         }
     </style>
     <script type="text/javascript">
+      window.onload= function(e){
+          let throttleAjax = throttle(urlconverter,1500);
+          document.getElementById("urlID").addEventListener("keyup",e=>{
+            throttleAjax(e.target.value);
+          })
+      };
+
       function throttle(func,delay){ //节流 高阶函数
             let prev = 0;//上一次记录时间
             return function(arguments){
@@ -25,8 +32,8 @@
               }
             }
       } 
-      function urlconverter() { 
-          str=urlID.value.trim();
+      function urlconverter(url) { 
+          str=url.trim();
           pathIndex=str.indexOf('/alm3p/?');
           if(pathIndex>0){
               //oldPath=str.slice(pathIndex+8).split('&').filter(e=>e.startsWith('path='))[0].slice(5); 
@@ -55,7 +62,7 @@
 <br>
 <br>
 <br>
-<input type="text" placeholder="alm3p URL" id="urlID" onkeyup="throttle(urlconverter,1000)()" autocomplete="off" >
+<input type="text" placeholder="alm3p URL" id="urlID" autocomplete="off" >
 
 </body>
 </html>
