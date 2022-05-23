@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL intent 打开 弹弹player </title> 
+    <style type="text/css">
+      button {
+          display: block;
+          height: 40px;
+          margin-top: 10px;
+      }
+    </style>
+    <script type="text/javascript">
+      function throttle(func,delay){ //节流 高阶函数
+            let prev = 0;//上一次记录时间
+            return function(arguments){
+              let now = Date.now();//当前时间戳
+              if(now - prev > delay){//当前时间 - 上次时间 > 延时时间
+                func.call(this,arguments);//执行函数 发送请求
+                prev = now;//重置记录时间
+              }
+            }
+      } 
+      function urlconverter() { 
+          str=urlID.value.trim();
+          pathIndex=str.indexOf('/alm3p/?');
+          if(pathIndex>0){
+              //oldPath=str.slice(pathIndex+8).split('&').filter(e=>e.startsWith('path='))[0].slice(5); 
+              if(!str.match(/^https?:\/\//)){str='https://'+str;}
+              oUrl=new URL(str);
+              oldPath=oUrl.searchParams.get("path");
+
+              if(oldPath.length>0){ 
+                  //newPath="https://xxx/tmm3p/index.m3u8?path=/ttm3p/../"+oldPath+".m3u8"
+                  newPath=oUrl.origin+'/tmm3p/index.m3u8?path=/ttm3p/..'+encodeURIComponent(oldPath)+'.m3u8';
+                  href='intent:'+newPath+'#Intent;package=com.xyoye.dandanplay;end'; //intent 打开 弹弹player
+                  //window.prompt('url',href);
+                  window.open(href);
+              }
+          }
+      }
+    </script>
+</head>
+<body>
+<input type="text" placeholder="url" id="urlID" onkeyup="throttle(urlconverter,1000)()" autocomplete="off" size="24">
+<br>
+<br>
+<br>
+
+ 学习 js 节流 by 时间戳 & 高阶函数
+ from https://juejin.cn/post/6959161295358656520#heading-8
+
+</body>
+</html>
