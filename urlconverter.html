@@ -15,7 +15,7 @@
         }
     </style>
     <script type="text/javascript">
-      window.onload= function(e){
+      window.onload= function(){
           let throttleAjax = throttle(urlconverter,1500);
           document.getElementById("urlID").addEventListener("keyup",e=>{
             throttleAjax(e.target.value);
