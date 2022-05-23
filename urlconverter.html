@@ -16,7 +16,7 @@
     </style>
     <script type="text/javascript">
       window.onload= function(){
-          var prev  = Date.now(); 
+          window.prev  = Date.now(); 
           let throttleAjax = throttle(urlconverter,4000);
           document.getElementById("urlID").addEventListener("keyup",e=>{
             throttleAjax(e.target.value);
