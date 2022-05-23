@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>URL intent 打开 弹弹player </title> 
     <style type="text/css">
-      button {
-          display: block;
-          height: 40px;
-          margin-top: 10px;
-      }
+        #urlID {
+            right: 50%;
+            bottom: 50%;
+            transform: translate(50%,50%);
+            position: absolute;
+            height: 8%;
+        }
     </style>
     <script type="text/javascript">
       function throttle(func,delay){ //节流 高阶函数
@@ -43,13 +45,13 @@
     </script>
 </head>
 <body>
-<input type="text" placeholder="url" id="urlID" onkeyup="throttle(urlconverter,1000)()" autocomplete="off" size="24">
-<br>
-<br>
-<br>
 
  学习 js 节流 by 时间戳 & 高阶函数
  from https://juejin.cn/post/6959161295358656520#heading-8
+<br>
+<br>
+<br>
+<input type="text" placeholder="alm3p URL" id="urlID" onkeyup="throttle(urlconverter,1000)()" autocomplete="off" size="48">
 
 </body>
 </html>
