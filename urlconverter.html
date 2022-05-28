@@ -15,7 +15,7 @@
         }
     </style>
     <script type="text/javascript">
-      var prev  = Date.now(); 
+      var prev  = 0; //Date.now(); 
       function throttle(func,delay){ //节流 高阶函数
             //let prev = 0;//上一次记录时间
             return function(arguments){
@@ -64,7 +64,7 @@
 <br>
 <br>
 <br>
-<input type="text" placeholder="URL" onkeyup="open(this.value)" autocomplete="off" >
+<input type="text" placeholder="open URL" onkeyup="throttle(open,1500)(this.value)" autocomplete="off" >
 
 </body>
 </html>
