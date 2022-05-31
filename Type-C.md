@@ -17,7 +17,8 @@ https://detail.1688.com/offer/638053096796.html  <br>
 https://detail.1688.com/offer/660161185254.html  <br>
 820 的电视盒子 ？？三星s8=>835的电视盒子  
 801 only USB Type-C 3.0
-雷电3肯定同时支持USB3.1，反之未必
+雷电3肯定同时支持USB3.1，反之未必<br>
+USB3.1扩展坞=>4k60hz+5Gbps usb3.0是完全可以的，而且小新pro13支持的DP1.4模式的HBR3功能 也完全支持（ 来源于知乎网友拿显示器测得）。
 ![usb speed](https://img.phonandroid.com/2015/09/performance-usb.jpg) <br>
 vs Thunderbolt 3
 https://www.dell.com/support/kbdoc/zh-cn/000145161/usb-3-1type-cthunderbolt-%E9%9B%B7%E7%94%B53-%E6%8E%A5%E5%8F%A3%E8%A7%A3%E6%9E%90 
