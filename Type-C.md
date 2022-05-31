@@ -15,11 +15,16 @@ https://www.dell.com/support/kbdoc/zh-cn/000145161/usb-3-1type-cthunderbolt-%E9%
 
 2k 144hz还是4k 60hz已经做出选择 - 知乎 
 https://zhuanlan.zhihu.com/p/459694201 <br>
-Qualcomm Snapdragon 820 只能解码 4K HEVC video (Decode: 60 fps, 10-bit. Encode: 30 fps)  4k60hz decode 10-bit 4k60 FPS over HDMI 2.0 
+Qualcomm Snapdragon 820 只能解码 <br>
+4K HEVC video (Decode: 60 fps, 10-bit. Encode: 30 fps)  <br>
+4k60hz decode 10-bit 4k60 FPS over HDMI 2.0  <br>
 adb 修改window 为2k分辨率 2560 x 1440 / 4k 3840x2160？ <br>
+Refresh frequency limits for standard video HDMI :
+https://en.wikipedia.org/wiki/HDMI#cite_ref-HDMI1.0_95-15 <br>
 from
 https://www.qualcomm.com/content/dam/qcomm-martech/dm-assets/documents/snapdragon_product_brief_820_update062416.pdf
 <br>
+
 solution:
 
 type-c3.1扩展坞的高频应用就是数据传输3.1gen2; 投屏hdmi 4k@60hz/ dp1.4; 充电pd100w <br>
@@ -31,3 +36,4 @@ https://www.arrow.com/en/research-and-events/articles/usb-power-delivery-2-end-o
 手机与AENZR12合一扩展坞仍然存在兼容性问题，主要是电视或显示器分辨率无法自动匹配。 <br>
 It can work, because we can have it with USB 3.1, but we need drivers/settings inside a kernel and custom rom.
 I have a usb 3.1 type C module who give me charge, usb 3.0 port and hdmi port, actually, only USB 3.0 port work.
+
