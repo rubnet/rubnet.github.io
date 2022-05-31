@@ -1,4 +1,4 @@
-4k@60hz :
+1 FPS = 1 Hz <br> 4k@60hz :
 https://detail.1688.com/offer/638053096796.html  <br>
 4k@30hz :
 https://detail.1688.com/offer/660161185254.html  <br>
@@ -12,9 +12,9 @@ https://www.dell.com/support/kbdoc/zh-cn/000145161/usb-3-1type-cthunderbolt-%E9%
 ![vs speed](https://supportkb.dell.com/img/ka02R0000008KkCQAU/ka02R0000008KkCQAU_zh_CN_3.jpeg)
 ![Alt text](https://static.bhphotovideo.com/explora/sites/default/files/styles/960/public/thunderbolt-3-usb-3_1-usb-type-c-chart.jpg)
 
-1 FPS = 1 Hz
-2k 144hz还是4k 60hz已经做出选择 - 知乎
-https://zhuanlan.zhihu.com/p/459694201
+
+2k 144hz还是4k 60hz已经做出选择 - 知乎 
+https://zhuanlan.zhihu.com/p/459694201 <br>
 Qualcomm Snapdragon 820 只能解码 4K HEVC video (Decode: 60 fps, 10-bit. Encode: 30 fps)  4k60hz decode 10-bit 4k60 FPS over HDMI 2.0 
 adb 修改window 为2k分辨率 2560 x 1440 / 4k 3840x2160？ <br>
 from
