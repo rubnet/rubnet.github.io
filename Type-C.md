@@ -1,4 +1,17 @@
-1 FPS = 1 Hz <br> 4k@60hz :
+1 FPS = 1 Hz <br> 
+```
+/***
+x y is Screen resolution
+Horizontal pixels
+Vertical pixels
+z is Diagonal screen size inch
+https://www.omnicalculator.com/other/pixels-per-inch
+*/
+function ppi(x,y,z){return Math.sqrt(x*x+y*y)/z;}
+ppi(1920,1080,5.5);
+```
+
+4k@60hz :
 https://detail.1688.com/offer/638053096796.html  <br>
 4k@30hz :
 https://detail.1688.com/offer/660161185254.html  <br>
