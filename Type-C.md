@@ -34,6 +34,9 @@ type-c3.1扩展坞的高频应用就是数据传输3.1gen2; 投屏hdmi 4k@60hz/ 
 PD 2.0 供电 
 https://www.arrow.com/en/research-and-events/articles/usb-power-delivery-2-end-of-the-line-for-the-power-brick <br>
 手机与AENZR12合一扩展坞仍然存在兼容性问题，主要是电视或显示器分辨率无法自动匹配。 <br>
+分辨率太低看电视不爽？用adb硬改分辨率手机成为2k甚至4k
+https://www.bilibili.com/video/av90178383 <br>
 It can work, because we can have it with USB 3.1, but we need drivers/settings inside a kernel and custom rom.
 I have a usb 3.1 type C module who give me charge, usb 3.0 port and hdmi port, actually, only USB 3.0 port work.
+
 
