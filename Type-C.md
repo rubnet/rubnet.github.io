@@ -24,8 +24,10 @@ solution:
 
 type-c3.1扩展坞的高频应用就是数据传输3.1gen2; 投屏hdmi 4k@60hz/ dp1.4; 充电pd100w <br>
 遥控器是问题，无线adb手机安装scrcpy ？手机蓝牙键鼠https://www.bilibili.com/read/cv4494446/ 小米蓝牙遥控  <br>
-3.5mm音频 可以用手机的3.5mm / 蓝牙音箱 <br>
+音频 可以用手机的3.5mm jack/ 蓝牙音箱 <br>
 网卡芯片  linux 自带 驱动 最好 雷凌rtl <br>
+PD 2.0 供电 
+https://www.arrow.com/en/research-and-events/articles/usb-power-delivery-2-end-of-the-line-for-the-power-brick <br>
 手机与AENZR12合一扩展坞仍然存在兼容性问题，主要是电视或显示器分辨率无法自动匹配。 <br>
 It can work, because we can have it with USB 3.1, but we need drivers/settings inside a kernel and custom rom.
 I have a usb 3.1 type C module who give me charge, usb 3.0 port and hdmi port, actually, only USB 3.0 port work.
