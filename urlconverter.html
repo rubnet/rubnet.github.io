@@ -37,7 +37,7 @@
 
               if(oldPath.length>0){ 
                   //newPath="https://xxx/tmm3p/index.m3u8?path=/ttm3p/../"+oldPath+".m3u8"
-                  newPath=oUrl.origin+'/tmm3p/index.m3u8?path=/ttm3p/..'+encodeURIComponent(oldPath)+'.m3u8';
+                  newPath=oUrl.origin+'/tmm3p/index.m3u8?path=/ttm3p/..'+(oldPath)+'.m3u8';
                     if( /Android|Opera Mini/i.test(navigator.userAgent) ) {
                         href='intent:'+newPath+'#Intent;package=com.xyoye.dandanplay;end';
                         window.open(href); 
