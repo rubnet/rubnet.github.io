@@ -50,4 +50,5 @@ Proxy Group: ~
 Rule: ~
 rules: # bypass ddns for looking up ip   
  - DOMAIN-SUFFIX,ident.me,DIRECT
+ - DOMAIN-SUFFIX,ipv6.dynv6.com,DIRECT
 
