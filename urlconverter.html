@@ -9,8 +9,8 @@
             right: 50%;
             bottom: 50%;
             transform: translate(50%,50%);
-            position: absolute;
-            height: 8%;
+            position: static;
+            height: 60px;
             width: 60%;
         }
     </style>
@@ -65,22 +65,16 @@
 <br>
 <br>
 <br>
-<input type="text" placeholder="/alm3p/? URL" id="urlID" onkeyup="throttle(urlconverter,1500)(this.value)" autocomplete="off" >
-    
+<input type="text" placeholder="window open URL" onkeyup="window.open(this.value)" autocomplete="off">
+<br>
+<br>
+<br>
+<input type="text" placeholder="open URL By DDplay" onkeyup="throttle(openURLByDDplay,1500)(this.value)" autocomplete="off">
 <br>
 <br>
 <br>
 <br>
-<br>
-<br>
-<input type="text" placeholder="open URL By DDplay" onkeyup="throttle(openURLByDDplay,1500)(this.value)" autocomplete="off" >
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<input type="text" placeholder="window open URL" onkeyup="window.open(this.value)" autocomplete="off" >
-
+<input type="text" placeholder="/alm3p/? URL" id="urlID" onkeyup="throttle(urlconverter,1500)(this.value)" autocomplete="off">
+ 
 </body>
 </html>
