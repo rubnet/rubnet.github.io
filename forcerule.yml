@@ -19,7 +19,7 @@ cfw-bypass:
 cfw-latency-timeout: 5000
 dns:
   enable: true
-  ipv6: false
+  ipv6: true
   listen: 192.168.1.1:5353
   # enhanced-mode: redir-host # 或 fake-ip
   # These nameservers are used to resolve the DNS nameserver hostnames below.
@@ -28,11 +28,9 @@ dns:
     - 114.114.114.114
     - 119.29.29.29
 
-  nameserver: # fallback 与 nameserver 内的服务器列表同时发起请求，depend Country.mmdb当规则符合 GEOIP 在 CN 以外时，fallback 列表内的域名服务器生效。  
-    - tls://1.0.0.1
-    - tls://208.67.222.2
+  nameserver: # fallback 与 nameserver 内的服务器列表同时发起请求，depend Country.mmdb当规则符合 GEOIP 在 CN 以外时，fallback 列表内的域名服务器生效。      
     - https://146.112.41.2/dns-query
-    - https://1.0.0.1/dns-query
+    - https://[2620:119:fc::2]/dns-query
 
     #- 202.141.162.123:5353
     #doh_opendns_com
