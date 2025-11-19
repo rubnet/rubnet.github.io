@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GTIN-14 Generator</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .controls {
+            margin-bottom: 20px;
+        }
+        .gtinResults {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="controls">
+        <label>Generate how many GTINs:
+            <input id="gtin" type="number" pattern="[0-9]" value="1" placeholder="1" />
+        </label>
+        <button id="gtinButton">Generate!</button>
+    </div>
+<br>
+from https://jsfiddle.net/catalyst156/9PFr7/ 
+    <br>
+
+    <div id="results"></div>
+
+    <script>
+        function gtin14Gen() {
+            var packageLevel = 0;
+            var gs1Prefix = [0, 3];
+            
+            var labelerCode = [];
+            for (var index = 0; index < 10; index++) {
+                labelerCode[index] = Math.floor((Math.random() * 10));
+            }
+            
+            var gtinArray = [];
+            gtinArray.push(packageLevel);
+            gtinArray.push(gs1Prefix[0]);
+            gtinArray.push(gs1Prefix[1]);
+            for (index = 0; index < 10; index++) {
+                gtinArray.push(labelerCode[index]);
+            }
+            
+            gtinArray.push(checkDigit14(gtinArray));
+            
+            var gtinString = '';
+            for (index = 0; index < gtinArray.length; index++) {
+                gtinString += '' + gtinArray[index];
+            }
+
+            return gtinString;
+        }
+
+        function checkDigit14(gtinArray) {
+            var sum = 0;
+            for (var index = 0; index < gtinArray.length; index++) {
+                if (index % 2 !== 0) {
+                    sum += gtinArray[index];
+                } else {
+                    sum += gtinArray[index] * 3;
+                }
+            }
+
+            var checkDigit = 0;
+            var remainder = sum % 10;
+
+            if (remainder !== 0) {
+                checkDigit = 10 - remainder;
+            }
+            return checkDigit;
+        }
+
+        $(document).on('click', '#gtinButton', function() {
+            var amount = Math.max(1, parseInt($('#gtin').val(), 10));
+            var gtinArray = [];
+            
+            for (var index = 0; index < amount; index++) {
+                gtinArray.push(gtin14Gen());
+            }
+            
+            if ($('.gtinResults').length) {
+                $('.gtinResults').remove();
+            }
+            
+            for (index = 0; index < gtinArray.length; index++) {
+                $('#results').append('<p class="gtinResults">' + gtinArray[index] + '</p>');
+            }
+        });
+    </script>
+
+</body>
+</html>
